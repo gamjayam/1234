@@ -17,7 +17,7 @@
             justify-content: space-between;
             align-items: center;
             background-color: #f4f4f4;
-            padding: 20px;
+            padding: 10px 20px;  /* 패딩 설정 */
             position: fixed;  /* 스크롤 시 고정 */
             top: 0;
             width: 100%;
@@ -25,21 +25,20 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);  /* 약간의 그림자 추가 */
         }
         .logo {
-            font-size: 24px;
+            font-size: 20px;  /* 폰트 크기 */
             font-weight: bold;
             cursor: pointer;
         }
         nav {
             display: flex;
-            gap: 30px;  /* 두 과목 사이의 간격 */
-            margin-right: 30px;
+            gap: 20px;  /* 두 항목 사이의 간격 */
         }
         nav a {
             text-decoration: none;
             color: black;
-            padding: 15px 30px;  /* 버튼 패딩을 늘려서 버튼을 더 넓게 만듦 */
+            padding: 10px 20px;  /* 버튼 패딩 설정 */
             border: 1px solid black;
-            font-size: 18px;  /* 폰트 크기 조정 */
+            font-size: 16px;  /* 폰트 크기 */
         }
         nav a:hover {
             background-color: #ddd;
@@ -55,15 +54,17 @@
             align-items: center;
             background-size: cover; /* 배경 이미지 크기 */
             background-position: center;
-            margin-top: 95px;  /* header 높이만큼 간격을 둬서 겹치지 않게 함 */
+            margin-top: 60px;  /* header 높이만큼 간격을 둬서 겹치지 않게 함 */
+            padding-top: 20px; /* 배너 상단의 여백 추가 */
         }
 
-        /* 메인 섹션 */
+        /* 프로필 및 자기소개 섹션의 상단 여백 */
         .container {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             padding: 100px;
+            margin-top: 150px; /* 상단 배너와의 간격 추가 */
         }
 
         /* 프로필 및 자기소개 */
