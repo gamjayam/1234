@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="view" content="width=device-width, initial-scale=1.0">
+    <title>포트폴리오 웹페이지</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0; /* 전체적인 자리를 잡기위해 0으로 해놓음 (margin 은 칸 밖에 여유) */
+            padding: 0; /* 위와 같은 이유 (padding 은 칸 안쪽 사이즈? 혹은 여유) */
+        }
+        /* 상단 배너 및 로고 */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        nav {
+            display: flex;
+            gap: 15px;
+        }
+        nav a {
+            text-decoration: none;
+            color: black;
+            padding: 10px;
+            border: 1px solid black;
+        }
+        nav a:hover {
+            background-color: #ddd;
+        }
+        /* 메인 섹션 */
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+        .profile-pic, .self-intro, .portfolio-slider {
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin: 10px;
+        }
+        .profile-pic {
+            width: 200px;
+            height: 200px;
+        }
+        .self-intro {
+            width: 300px;
+            height: 200px;
+        }
+        .portfolio-slider {
+            width: 600px;
+            height: 300px;
+            position: relative;
+            overflow: hidden;
+        }
+        .portfolio-slider img {
+            width: 100%;
+            height: 100%;
+        }
+        /* 슬라이더 화살표 */
+        .arrow-left, .arrow-right {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            font-size: 24px;
+            padding: 10px;
+            cursor: pointer;
+        }
+        .arrow-left {
+            left: 10px;
+        }
+        .arrow-right {
+            right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo" onclick="goHome()">로고</div>
+    <nav>
+        <a href="#banner">과목1</a>
+        <a href="#self-intro">과목2</a>
+        <a href="#portfolio">과목3</a>
+    </nav>
+</header>
+
+<!-- 상단 배너 -->
+<section id="banner" style="height: 200px; background-color: #eee; text-align: center;">
+    <h1>상단배너</h1>
+</section>
+
+<!-- 프로필 및 자기소개 섹션 -->
+<div class="container">
+    <div class="profile-pic">
+        <h2>프로필 그림</h2>
+        <!-- 프로필 이미지가 들어갈 자리 -->
+    </div>
+    <div class="self-intro">
+        <h2>자기소개 글</h2>
+        <!-- 자기소개 글이 들어갈 자리 -->
+    </div>
+</div>
+
+<!-- 포트폴리오 슬라이더 섹션 -->
+<div class="container">
+    <div class="portfolio-slider" id="portfolio">
+        <button class="arrow-left" onclick="prevSlide()">&#8249;</button>
+        <img src="image1.jpg" id="slider-image">
+        <button class="arrow-right" onclick="nextSlide()">&#8250;</button>
+    </div>
+</div>
+
+<script>
+    let images = ['image1.jpg', 'image2.jpg', 'image3.jpg']; // 이미지 파일명 배열
+    let currentIndex = 0;
+
+    function goHome() {
+        window.scrollTo(0, 0); // 페이지 상단으로 이동
+    }
+
+    function nextSlide() {
+        currentIndex = (currentIndex + 1) % images.length; // 다음 이미지로 전환
+        document.getElementById('slider-image').src = images[currentIndex];
+    }
+
+    function prevSlide() {
+        currentIndex = (currentIndex - 1 + images.length) % images.length; // 이전 이미지로 전환
+        document.getElementById('slider-image').src = images[currentIndex];
+    }
+</script>
+
+</body>
+</html>
