@@ -18,6 +18,11 @@
             align-items: center;
             background-color: #f4f4f4;
             padding: 20px;
+            position: fixed;  /* 스크롤 시 고정 */
+            top: 0;
+            width: 100%;
+            z-index: 1000;  /* 다른 요소 위에 나타나도록 우선순위 설정 */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);  /* 약간의 그림자 추가로 고정 표시를 강조 */
         }
         .logo {
             font-size: 24px;
@@ -48,6 +53,7 @@
             align-items: center;
             background-size: cover; /* 배경 이미지 크기 */
             background-position: center;
+            margin-top: 100px;  /* 고정된 헤더 높이만큼 마진 추가 */
         }
 
         /* 메인 섹션 */
