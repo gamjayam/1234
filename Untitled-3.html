@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>포트폴리오 웹페이지</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* 상단 배너 및 로고 */
+        header {
+            display: flex;
+            align-items: center;
+            background-color: #f4f4f4;
+            padding: 10px 20px;  /* 패딩 설정 */
+            position: fixed;  /* 스크롤 시 고정 */
+            top: 0;
+            width: 100%;
+            z-index: 1000;  /* 다른 요소 위에 나타나도록 우선순위 설정 */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);  /* 약간의 그림자 추가 */
+        }
+        .logo {
+            margin-right: 20px; /* 로고와 링크 사이의 간격 */
+            height: 40px; /* 로고 이미지 높이 조정 */
+        }
+        nav {
+            display: flex;
+            flex: 1;
+            align-items: center;
+            justify-content: space-between; /* 왼쪽과 오른쪽의 내용이 양 끝에 배치되도록 함 */
+        }
+        .nav-left {
+            display: flex;
+            gap: 20px; /* 링크 간의 간격 */
+            margin-right: auto; /* 왼쪽 정렬 */
+        }
+        .nav-right {
+            display: flex;
+            gap: 20px; /* 링크 간의 간격 */
+            position: relative;
+            left: -20px; /* 왼쪽으로 이동 */
+        }
+        nav a {
+            text-decoration: none;
+            color: black;
+            padding: 10px 20px;  /* 버튼 패딩 설정 */
+            font-size: 16px;  /* 폰트 크기 */
+        }
+        nav a:hover {
+            background-color: #ddd;
+        }
+        nav a.no-border {
+            border: none;
+        }
+
+        /* 상단 배너 */
+        #banner {
+            height: 300px; /* 높이를 300px로 변경 */
+            background-color: #eee; /* 배경색 */
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-size: cover; /* 배경 이미지 크기 */
+            background-position: center;
+            margin-top: 60px;  /* header 높이만큼 간격을 둬서 겹치지 않게 함 */
+            padding-top: 20px; /* 배너 상단의 여백 추가 */
+        }
+
+        /* 프로필 및 자기소개 섹션의 상단 여백 */
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 100px;
+            margin-top: 500px; /* 상단 배너와의 간격 추가 */
+        }
+
+        /* 프로필 및 자기소개 */
+        .profile-pic, .self-intro, .portfolio-slider {
+            padding: 20px;
+            margin: 100px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        #profile-section {
+            display: flex;
+            gap: 40px; /* 두 섹션 간의 간격을 넓힘 */
+        }
+
+        #profile-pic {
+            width: 300px; /* 프로필 사진 너비를 더 넓게 설정 */
+            height: 300px; /* 높이를 더 넓게 설정 */
+            background-color: #f0f0f0; /* 기본 배경색 */
+        }
+
+        #self-intro {
+            width: 500px; /* 자기소개 글 너비를 더 넓게 설정 */
+            height: 300px; /* 높이를 더 넓게 설정 */
+            background-color: #f0f0f0; /* 기본 배경색 */
+        }
+
+        /* 포트폴리오 슬라이더 */
+        #portfolio {
+            width: 600px;
+            height: 300px;
+            position: relative;
+            overflow: hidden;
+            background-color: #ddd; /* 기본 배경색 */
+        }
+
+        .portfolio-slider img {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* 슬라이더 화살표 */
+        .arrow-left, .arrow-right {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            font-size: 24px;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .arrow-left {
+            left: 10px;
+        }
+
+        .arrow-right {
+            right: 10px;
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;  /* 부드러운 스크롤링 적용 */
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <a href="https://www.example.com">
+        <img src="logo-image.jpg" alt="로고" class="logo">
+    </a>
+    <nav>
+        <div class="nav-left">
+            <a href="https://www.example1.com" class="no-border">링크 1</a>
+            <a href="https://www.example2.com" class="no-border">링크 2</a>
+            <a href="https://www.example3.com" class="no-border">링크 3</a>
+            <a href="https://www.example4.com" class="no-border">링크 4</a>
+            <a href="https://www.example5.com" class="no-border">링크 5</a>
+        </div>
+        <div class="nav-right">
+            <a href="#profile-section">과목1</a>
+            <a href="#portfolio">과목2</a>
+        </div>
+    </nav>
+</header>
+
+<!-- 상단 배너 -->
+<section id="banner" style="background-image: url('banner-image.jpg');">
+    <h1>상단배너</h1>
+</section>
+
+<!-- 프로필 및 자기소개 섹션 -->
+<div class="container" id="profile-section">
+    <div id="profile-pic" style="background-image: url('profile-pic.jpg');">
+        <h2>프로필 그림</h2>
+    </div>
+    <div id="self-intro" style="background-image: url('self-intro-background.jpg');">
+        <h2>자기소개 글</h2>
+    </div>
+</div>
+
+<!-- 포트폴리오 슬라이더 섹션 -->
+<div class="container">
+    <div class="portfolio-slider" id="portfolio" style="background-image: url('portfolio-background.jpg');">
+        <button class="arrow-left" onclick="prevSlide()">&#8249;</button>
+        <img src="image1.jpg" id="slider-image">
+        <button class="arrow-right" onclick="nextSlide()">&#8250;</button>
+    </div>
+</div>
+
+<script>
+    let images = ['image1.jpg', 'image2.jpg', 'image3.jpg']; // 이미지 파일명 배열
+    let currentIndex = 0;
+
+    function nextSlide() {
+        currentIndex = (currentIndex + 1) % images.length; // 다음 이미지로 전환
+        document.getElementById('slider-image').src = images[currentIndex];
+    }
+
+    function prevSlide() {
+        currentIndex = (currentIndex - 1 + images.length) % images.length; // 이전 이미지로 전환
+        document.getElementById('slider-image').src = images[currentIndex];
+    }
+</script>
+
+</body>
+</html>
