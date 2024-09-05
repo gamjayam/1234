@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>포트폴리오 웹페이지</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+            overflow-y: hidden; /* 기본 스크롤 비활성화 */
+        }
+
+        /* 상단 배너 및 로고 */
+        header {
+            display: flex;
+            align-items: center;
+            background-color: #f4f4f4;
+            padding: 10px 20px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        /* 로고 및 링크를 왼쪽에 정렬 */
+        .header-content {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        /* 로고 스타일 */
+        .logo img {
+            height: 40px; /* 이미지 높이 조절 */
+            cursor: pointer;
+        }
+
+        /* 왼쪽에 링크 1~5를 배치 */
+        .left-nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: black;
+            font-size: 16px;
+            padding: 10px;
+        }
+
+        nav a:hover {
+            color: #555;
+        }
+
+        /* 각 섹션 높이 설정 */
+        section {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* 상단 배너 설정 */
+        #banner {
+            height: 200px;
+            background-color: #eee;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-size: cover;
+            background-position: center;
+            margin-top: 60px;  /* header 높이만큼 간격 추가 */
+            padding-top: 20px;
+        }
+
+        /* 프로필 및 자기소개 섹션 */
+        #profile-section {
+            display: flex;
+            gap: 40px;
+            padding: 100px;
+            background-color: #f0f0f0;
+        }
+
+        #profile-pic, #self-intro {
+            width: 300px;
+            height: 300px;
+            background-color: #ddd;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* 포트폴리오 섹션을 프로필 및 자기소개와 유사한 레이아웃으로 변경 */
+        #portfolio-section {
+            display: flex;
+            gap: 40px;
+            padding: 100px;
+            background-color: #f0f0f0;
+        }
+
+        #portfolio-pic, #portfolio-desc {
+            width: 300px;
+            height: 300px;
+            background-color: #ddd;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* 화살표 버튼 설정 */
+        .arrow {
+            position: fixed;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            font-size: 24px;
+            padding: 10px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .arrow-up {
+            right: 20px;
+            top: 45%; /* 중간에서 약간 위로 */
+        }
+
+        .arrow-down {
+            right: 20px;
+            top: 55%; /* 중간에서 약간 아래로 */
+        }
+
+    </style>
+</head>
+<body>
+
+<header>
+    <!-- 로고 및 링크를 포함하는 컨테이너 -->
+    <div class="header-content">
+        <!-- 로고 -->
+        <div class="logo" onclick="location.href='https://example.com'">
+            <img src="logo-image.png" alt="로고 이미지">
+        </div>
+
+        <!-- 왼쪽에 링크 1~5 표시 -->
+        <nav class="left-nav">
+            <a href="https://example1.com">링크1</a>
+            <a href="https://example2.com">링크2</a>
+            <a href="https://example3.com">링크3</a>
+            <a href="https://example4.com">링크4</a>
+            <a href="https://example5.com">링크5</a>
+        </nav>
+    </div>
+</header>
+
+<!-- 첫 번째 배너 섹션 -->
+<section id="banner" style="background-image: url('banner-image1.jpg');">
+    <h1>상단 배너 1</h1>
+</section>
+
+<!-- 포트폴리오 섹션들 -->
+<section id="portfolio-section">
+    <div id="portfolio-pic">포트폴리오 사진</div>
+    <div id="portfolio-desc">포트폴리오 설명</div>
+</section>
+
+<section id="portfolio-section">
+    <div id="portfolio-pic">포트폴리오 사진</div>
+    <div id="portfolio-desc">포트폴리오 설명</div>
+</section>
+
+<section id="portfolio-section">
+    <div id="portfolio-pic">포트폴리오 사진</div>
+    <div id="portfolio-desc">포트폴리오 설명</div>
+</section>
+
+<!-- 화살표 버튼 -->
+<button class="arrow arrow-up" onclick="scrollToSection('up')">&#8593;</button>
+<button class="arrow arrow-down" onclick="scrollToSection('down')">&#8595;</button>
+
+<script>
+    // 모든 섹션을 담은 배열
+    const sections = document.querySelectorAll('section');
+    let currentSectionIndex = 0;
+    let isScrolling = false;  // 스크롤 중인지 확인하는 플래그
+
+    // 방향에 따라 섹션으로 스크롤 이동
+    function scrollToSection(direction) {
+        if (isScrolling) return;  // 이미 스크롤 중이면 함수 종료
+        isScrolling = true;  // 스크롤 중으로 플래그 설정
+
+        // 방향에 따라 인덱스 업데이트
+        if (direction === 'down') {
+            currentSectionIndex = Math.min(currentSectionIndex + 1, sections.length - 1);
+        } else if (direction === 'up') {
+            currentSectionIndex = Math.max(currentSectionIndex - 1, 0);
+        }
+
+        // 해당 섹션으로 스크롤 이동
+        sections[currentSectionIndex].scrollIntoView({ behavior: 'smooth' });
+
+        // 1.5초(1500ms) 후에 스크롤 가능 상태로 전환
+        setTimeout(() => {
+            isScrolling = false;
+        }, 1000);  // 1.5초 쿨타임
+    }
+
+    // 마우스 스크롤에 따라 섹션 간 이동
+    window.addEventListener('wheel', function(event) {
+        event.preventDefault(); // 기본 스크롤 동작 방지
+        if (event.deltaY > 0) {
+            scrollToSection('down');
+        } else {
+            scrollToSection('up');
+        }
+    }, { passive: false }); // passive: false를 사용하여 preventDefault() 호출 가능
+
+</script>
+
+</body>
+</html>
